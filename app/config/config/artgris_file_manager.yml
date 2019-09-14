@@ -1,0 +1,17 @@
+artgris_file_manager:
+  web_dir: web
+  conf:
+    public:
+      upload:
+        max_file_size: 1048576
+        max_width: 1024
+        max_height: 768
+        image_library: 1
+    tiny:
+      dir: "../web/uploads"
+    private:
+      dir: '../private'
+    button:
+      dir: "../web/uploads"
+    default:
+      dir: "../web/uploads"

@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<div class="padding-section"></div>
+<section>
+    <div id="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                {% for exp in folders %}
+                    <a class="thumbnail" href="{{ vich_uploader_asset(exp, 'imageFile') }}" data-lightbox="example-set" data-title="">
+                        <img class="example-image" src="{{ vich_uploader_asset(exp, 'imageFile') }}" alt="{{ exp.title }}" /></a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

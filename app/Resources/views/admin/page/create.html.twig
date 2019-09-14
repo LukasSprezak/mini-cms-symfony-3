@@ -1,0 +1,69 @@
+{% extends "baseAdmin.html.twig" %}
+{% block body %}
+<div class="container" style="margin-top:40px;">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#content" role="tab" aria-controls="home" aria-selected="true">{{ 'menu.content'|trans }}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="profile" aria-selected="false">{{ 'menu.menu'|trans }}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#seo" role="tab" aria-controls="contact" aria-selected="false">{{ 'menu.seo'|trans }}</a>
+        </li>
+    </ul>
+    {{ form_start(form, {"attr": {"novalidate": "novalidate"}}, {"class": "img-fluid"})}}
+    <div class="tab-content" id="myTabContent" style="margin-top:40px;">
+        <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="home-tab">
+            <div class="form-group">
+                <label class="control-label">{{ 'page.title'|trans }}</label>
+                {{ form_widget(form.title) }}
+                {{ form_errors(form.title) }}
+            </div>
+            <div class="form-group">
+                <label class="control-label">{{ 'page.content'|trans }}</label>
+                {{ form_widget(form.content) }}
+                {{ form_errors(form.content) }}
+            </div>
+            <div class="form-group">
+                <label class="control-label">{{ 'page.date_of_addition'|trans }}</label>
+                {{ form_widget(form.createdAt) }}
+                {{ form_errors(form.createdAt) }}
+            </div>
+        </div>
+        <div class="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="form-group">
+                <label class="control-label">{{ 'page.web_address'|trans }}</label>
+                {{ form_widget(form.alias) }}
+                {{ form_errors(form.alias) }}
+            </div>
+            <div class="form-group">
+                <label class="control-label">{{ 'page.add_to_menu'|trans }}</label>
+                {{ form_widget(form.enabled) }}
+            </div>
+            <div class="form-group">
+                <label class="control-label">{{ 'page.hidden_sidebar'|trans }}</label>
+                {{ form_widget(form.hiddenSidebar) }}
+            </div>
+        </div>
+        <div class="tab-pane fade" id="seo" role="tabpanel" aria-labelledby="contact-tab">
+            <div class="form-group">
+                <label class="control-label">{{ 'page.keywords'|trans }}</label>
+                {{ form_widget(form.keywords) }}
+                {{ form_errors(form.keywords) }}
+            </div>
+            <div class="form-group">
+                <label class="control-label">{{ 'page.description'|trans }}</label>
+                {{ form_widget(form.description) }}
+                {{ form_errors(form.description) }}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">
+            {{ 'menu.save'|trans }}<i class="fa fa-save ml-2" aria-hidden="true"></i>
+        </button>
+        <a href="{{ url('page_index') }}" class="btn btn-light">{{ 'menu.cancel'|trans }}<span class="fas fa-undo ml-2"></span></a>
+    </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
+

@@ -1,0 +1,122 @@
+page.updated_success: Page update success.
+page.delete_success: Page delete success.
+page.add_success: Page add success.
+page.add_error: Page add failed.
+
+post.update_success: Article update success.
+post.delete_success: Article delete success.
+post.add_success: Article add success.
+
+gallery.update_success: Gallery update success.
+gallery.delete_success: Gallery delete success.
+gallery.add_success: Gallery add success.
+
+post.tag_delete: Tag delete success.
+
+post.exception_details: There are no page with this id
+
+admin.system: System
+admin.cache: Clear cache
+admin.php: PHP
+admin.database: Database
+admin.view_details: View details
+admin.info_system: Information about the system
+admin.last_logged:  last logged in at
+admin.amount_pages: Amount pages
+admin.amount_posts: Amount posts
+admin.amount_users: Amount users
+admin.amount_galleries: Amount galleries
+
+menu.page: Page
+menu.add_new_page: Add page
+menu.alls: All
+menu.all: All
+menu.media: Media
+menu.blog: Blog
+menu.add_article: Add article
+menu.tags: Tags
+menu.category: Category
+menu.add_gallery: Add gallery
+menu.gallery: Gallery
+menu.users: Users
+menu.add: Add
+menu.change_password: Change password
+menu.settings: Settings
+menu.dashboard: Dashboard
+menu.homepage: Homepage
+menu.logout: Logout
+menu.search: Search
+menu.preview: Preview
+menu.want_to_logout: Are you sure you want to log out ?
+menu.want_to_delete: Are you sure you want to delete ?
+menu.cancel: Cancel
+menu.content: Content
+menu.save: Save
+menu.menu: Menu
+menu.seo: SEO
+menu.yes: Yes
+menu.no: No
+menu.option: Option
+menu.edit: Edit
+menu.view: View
+menu.delete: Delete
+menu.return: Return
+
+menu.list_page: Page list
+page.title: Title
+page.content: Content
+page.date_of_addition: Date of addition
+page.web_address: Web adrress
+page.add_to_menu: Add page to menu
+page.hidden_sidebar: Hidden sidebar
+page.keywords: Keywords
+page.description: Description
+
+menu.list_post: Post list
+post.title: Title
+post.content: Content
+post.add_date: Date of addition
+post.add_published: Date of publication
+post.author: Author
+post.status: Status
+post.web_address: Web adrress
+post.add_to_menu: Add page to menu
+post.hidden_sidebar: Hidden sidebar
+post.keywords: Keywords
+post.description: Description
+post.category: Category
+post.tags: Tags
+post.add_tags: Add tags
+post.alt: Image name
+post.beginning_text: Beginning content
+post.add_image: Add image
+post.count: Count assigned posts
+post.choice_status: Choice status
+post.status_active: Active
+post.status_not_active: Not active
+post.status_draft: Draft
+
+menu.tags_list: Tags list
+tag.add: Add tag
+tag.name: Name
+tag.id: ID
+tag.title: Title
+tag.web_address: Web adrress
+tag.add_new: Add new tag
+tag.edit: Edit tag
+
+menu.category_list: Category list
+category.add: Add category
+category.id: ID
+category.name: Name
+category.delete: Delete category
+category.add_new: Add new category
+category.edit: Edit category
+
+gallery.choice_user: Choice user
+gallery.alt: Main image
+gallery.name: Gallery name
+
+front.post_exception: Article not found
+
+command.create_user: Create User

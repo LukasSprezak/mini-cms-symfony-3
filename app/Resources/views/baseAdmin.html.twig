@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Panel Administracyjny</title>
+    {% block stylesheets %}
+        <link href="{{ asset('assets/admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/admin/vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/admin/css/sb-admin.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/admin/assets/libs/bootstrap-datepicker-master/dist/css/bootstrap-datepicker.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,600">
+    {% endblock %}
+{#
+    <link rel="stylesheet"
+              href="{{ asset('bundles/artgrisfilemanager/libs/jstree/dist/themes/default/style.min.css') }}">
+        <link rel="stylesheet"
+              href="{{ asset('bundles/artgrisfilemanager/libs/blueimp-file-upload/css/jquery.fileupload.css') }}">
+        <link rel="stylesheet" href="{{ asset('bundles/artgrisfilemanager/css/manager.css') }}">
+        <link rel="stylesheet"
+              href="{{ asset('bundles/artgrisfilemanager/libs/jQuery-contextMenu/dist/jquery.contextMenu.min.css') }}">
+#}
+<style>
+    body {
+        font-family: 'Nunito', sans-serif;
+    }
+</style>
+</head>
+<body id="page-top">
+
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <form action="{{ path('page_search') }}" class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" method="get">
+        <div class="input-group">
+            <input type="text" class="form-control" name="searchPageByTitle" placeholder="{{ 'menu.search'|trans }}" aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user-circle fa-fw"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="{{ url('setting') }}">{{ 'menu.settings'|trans }}</a>
+                <a class="dropdown-item" target="_blank" href="#">{{ 'menu.homepage'|trans }}</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">{{ 'menu.logout'|trans }}</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+<div id="wrapper">
+    <ul class="sidebar navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ url('admin') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>{{ 'menu.dashboard'|trans }}</span>
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-folder-open"></i>
+                <span>{{ 'menu.page'|trans }}</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <a class="dropdown-item" href="{{ url('page_create') }}">{{ 'menu.add_new_page'|trans }}</a>
+                <a class="dropdown-item" href="{{ url('page_index') }}">{{ 'menu.alls'|trans }}</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-newspaper"></i>
+                <span>{{ 'menu.blog'|trans }}</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <a class="dropdown-item" href="{{ url('post_create') }}">{{ 'menu.add_article'|trans }}</a>
+                <a class="dropdown-item" href="{{ url('post_index') }}">{{ 'menu.alls'|trans }}</a>
+                <a class="dropdown-item" href="{{ url('tag') }}">{{ 'menu.tags'|trans }}</a>
+                <a class="dropdown-item" href="{{ url('category') }}">{{ 'menu.category'|trans }}</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-camera"></i>
+                <span>{{ 'menu.gallery'|trans }}</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <a class="dropdown-item" href="{{ url('gallery_create') }}">{{ 'menu.add_gallery'|trans }}</a>
+                <a class="dropdown-item" href="{{ url('gallery') }}">{{ 'menu.alls'|trans }}</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" target="_blank" href="/admin/manager/?conf=default">
+                <i class="far fa-image"></i>
+                <span>{{ 'menu.media'|trans }}</span></a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-users"></i>
+                <span>{{ 'menu.users'|trans }}</span>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                <a class="dropdown-item" href="{{ url('user_register') }}">{{ 'menu.add'|trans }}</a>
+                <a class="dropdown-item" href="{{ url('security_list') }}">{{ 'menu.all'|trans }}</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('setting') }}">
+                <i class="fas fa-cogs"></i>
+                <span>{{ 'menu.settings'|trans }}</span></a>
+        </li>
+    </ul>
+
+    <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="">{{ 'menu.dashboard'|trans }}</a>
+                </li>
+                <li class="breadcrumb-item active">{{ 'menu.preview'|trans }}</li>
+            </ol>
+
+            <div class="container" style="margin-top: 20px;">
+                {% for message in app.flashes("success") %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">{{ message|trans }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+
+                {% for message in app.flashes("error") %}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ message|trans }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+            {% block body %} {% endblock %}
+        </div>
+
+        <footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright © 2019</span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ 'menu.logout'|trans }}</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">{{ 'menu.want_to_logout'|trans }}</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">{{ 'menu.cancel'|trans }}</button>
+                <a class="btn btn-primary" href="">{{ 'menu.logout'|trans }}</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block javascripts %}
+    <script src="{{ asset('assets/admin/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/vendor/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/vendor/datatables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('assets/admin/vendor/datatables/dataTables.bootstrap4.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/sb-admin.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/demo/datatables-demo.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/demo/chart-area-demo.js') }}"></script>
+
+    <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/blueimp-file-upload/js/vendor/jquery.ui.widget.js') }}"></script>
+    <script src="{{ asset('assets/libs/blueimp-file-upload/js/jquery.iframe-transport.js') }}"></script>
+    <script src="{{ asset('assets/libs/blueimp-file-upload/js/jquery.fileupload.js') }}"></script>
+    <script src="{{ asset('assets/libs/bootstrap-datepicker-master/dist/js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('assets/libs/bootstrap-datepicker-master/dist/locales/bootstrap-datepicker.pl.min.js') }}" charset="UTF-8"></script>
+    <script src="{{ asset('assets/libs/tinymce/tinymce.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/app/js/app.js') }}"></script>
+
+{% endblock %}
+<script>
+    jQuery(document).ready(function () {
+        $('.js-datepicker').datepicker({
+            language: 'pl',
+        })
+    })
+</script>
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        file_browser_callback_types: 'file image media',
+        relative_urls : true,
+        convert_urls : true,
+        images_upload_base_path: '/uploads',
+        file_picker_types: 'image',
+        content_css: 'https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+        noneditable_noneditable_class: 'fa',
+        extended_valid_elements: 'span[*]',
+        file_browser_callback: myFileBrowser,
+        language : 'pl',
+        plugins: [
+            "fontawesome noneditable advlist autolink lists link image charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars code fullscreen",
+            "insertdatetime media nonbreaking save table contextmenu directionality",
+            "emoticons template paste textcolor colorpicker textpattern"
+        ],
+        toolbar: 'fontawesome',
+        toolbar1: "fontawesome insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | image link unlink media code",
+        toolbar2: "print preview media | forecolor backcolor emoticons | fullscreen",
+        image_advtab: true,
+    });
+    function myFileBrowser(field_name, url, type, win) {
+
+        var cmsURL = "{{ path('file_manager', {module:'tiny', conf:'tiny'}) }}";
+        if (cmsURL.indexOf("?") < 0) {
+            cmsURL = cmsURL + "?type=" + type;
+        }
+        else {
+            cmsURL = cmsURL + "&type=" + type;
+        }
+
+        tinyMCE.activeEditor.windowManager.open({
+            file: cmsURL,
+            title: 'File Manager',
+            width: 1024,
+            height: 500
+        }, {
+            window: win,
+            input: field_name
+        });
+
+        return false;
+    }
+</script>
+</body>
+</html>

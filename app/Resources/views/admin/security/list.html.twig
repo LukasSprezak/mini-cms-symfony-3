@@ -1,0 +1,27 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" style="margin-bottom: 20px;">
+                <h1>Lista Użytkowników:</h1>
+            </div>
+            <div class="col-lg-12">
+                <table class="table table-striped">
+                    <tr>
+                        <th scope="col">Nazwa użytkownika</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Imię i nazwisko</th>
+                    </tr>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.fullname }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

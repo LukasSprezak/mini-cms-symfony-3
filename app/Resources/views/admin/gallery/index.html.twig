@@ -1,0 +1,16 @@
+{% extends 'baseAdmin.html.twig'  %}
+{% block body %}
+    {% for gallery in galleries %}
+    <div class="container">
+        <div class="card border-light float-left" style="width: 18rem;">
+            <img src="{{ asset('img/placeholder.jpg') }}" class="card-img-top" width="200px" alt="">
+            <div class="card-body text-center">
+                {{ 'gallery.name'|trans }}: {{ gallery.fullname }}
+            </div>
+            <a href="{{ url('gallery_edit', {'id': gallery.id}) }}" class="btn btn-xs btn-info">{{ 'menu.edit'|trans }}<span class="fas fa-edit ml-2"></span></a>
+            <a href="{{ url('gallery_details', {'fullname': gallery.fullname}) }}" class="btn btn-xs btn-success">{{ 'menu.view'|trans }}<span class="far fa-folder-open ml-2"></span></a>
+            <a href="{{ url('gallery_delete', {'id': gallery.id}) }}" class="btn btn-xs btn-danger">{{ 'menu.delete'|trans }}<span class="ml-2"></span></a>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}

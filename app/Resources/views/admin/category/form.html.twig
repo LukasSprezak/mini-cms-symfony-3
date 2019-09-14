@@ -1,0 +1,32 @@
+{% extends 'baseAdmin.html.twig' %}
+{% set pageTitle = category.id is null
+    ? 'category.add_new'|trans
+    : 'category.edit'|format(category.name)|trans
+%}
+{% block pageTitle %}
+    {{ pageTitle }}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {{ pageTitle }}
+                </div>
+                <div class="panel-body">
+                    {{ form_start(form) }}
+                        {{ form_row(form.name) }}
+                        {{ form_row(form.slug) }}
+                        <button type="submit" class="btn btn-primary">
+                            {{ 'menu.save'|trans }}<i class="fa fa-save ml-2" aria-hidden="true"></i>
+                        </button>
+                        <a href="{{ url('category') }}" class="btn btn-light">{{ 'menu.cancel'|trans }}<span class="fas fa-undo ml-2"></span></a>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

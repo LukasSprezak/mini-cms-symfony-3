@@ -1,0 +1,124 @@
+### ADMIN ###
+page.updated_success: Strona została zaktualizowana.
+page.delete_success: Strona została usunięta.
+page.add_success: Strona została utworzona.
+page.add_error: Nie udało się utworzyć stronę.
+
+post.update_success: Artykuł został zaktualizowany.
+post.delete_success: Artykuł został usunięty.
+post.add_success: Artykuł został utworzony.
+
+gallery.updated_success: Strona została zaktualizowana.
+gallery.delete_success: Strona została usunięta.
+gallery.add_success: Strona została utworzona.
+
+
+post.tag_delete: Poprawnie usunięto tag.
+
+post.exception_details: Pod tym Id nie ma żadnej strony
+
+admin.system: System
+admin.cache: Pamięć podręczna
+admin.php: PHP
+admin.database: Baza danych
+admin.view_details: Zobacz szczegóły
+admin.info_system: Informacje o systemie
+admin.last_logged: Ostatnio zalogowany o
+admin.amount_pages: Ilość stron
+admin.amount_posts: Ilość postów
+admin.amount_users: Ilość Użytkowników
+admin.amount_galleries: Ilość galerii
+
+menu.page: Strony
+menu.add_new_page: Dodaj strone
+menu.alls: Wszystko
+menu.all: Wszyscy
+menu.media: Media
+menu.blog: Blog
+menu.add_article: Dodaj artykuł
+menu.tags: Tagi
+menu.category: Kategoria
+menu.add_gallery: Dodaj galerie
+menu.gallery: Galeria
+menu.users: Użytkownicy
+menu.add: Dodaj
+menu.change_password: Zmień hasło
+menu.settings: Ustawienia
+menu.dashboard: Ekran startowy
+menu.homepage: Powrót do strony.
+menu.logout: Wyloguj
+menu.search: Szukaj
+menu.preview: Przegląd
+menu.want_to_logout: Czy na pewno chcesz się wylogować ?
+menu.want_to_delete: Czy na pewno chcesz usunąć?
+menu.cancel: Anuluj
+menu.content: Treść
+menu.save: Zapisz
+menu.menu: Menu
+menu.seo: SEO
+menu.yes: Tak
+menu.no: Nie
+menu.option: Opcje
+menu.edit: Edytuj
+menu.view: Pokaż
+menu.delete: Usuń
+menu.return: Powrót
+
+menu.list_page: Dostępna lista stron
+page.title: Tytuł
+page.content: Treść
+page.date_of_addition: Data dodania
+page.web_address: Adres
+page.add_to_menu: Dodaj do menu głównego
+page.hidden_sidebar: Ukryj Sidebar - panel boczny
+page.keywords: Keywords - słowa kluczowe
+page.description: Description - opis witryny
+
+menu.list_post: Dostępna lista postów
+post.title: Tytuł
+post.content: Treść
+post.add_date: Data dodania
+post.add_published: Data opublikowania
+post.author: Autor
+post.status: Status
+post.web_address: Adres
+post.add_to_menu: Dodaj do menu głównego
+post.hidden_sidebar: Ukryj Sidebar - panel boczny
+post.keywords: Keywords - słowa kluczowe
+post.description: Description - opis witryny
+post.category: Kategoria
+post.tags: Tagi
+post.add_tags: Dodaj Tagi
+post.alt: Nazwa zdjęcia
+post.beginning_text: Treść początkowa
+post.add_image: Dodaj zdjęcie
+post.count: Ilość postów przypisanych
+post.choice_status: Wybierz status
+post.status_active: Opublikuj
+post.status_not_active: Niepublikuj
+post.status_draft: Szkic
+
+menu.tags_list: Dostępna lista tagów
+tag.add: Dodaj tag
+tag.name: Nazwa
+tag.id: ID
+tag.title: Tytuł
+tag.web_address: Adres
+tag.add_new: Dodawanie nowego Tagu
+tag.edit: Edycja tagu
+
+menu.category_list: Dostępna lista kategorii
+category.add: Dodaj kategorie
+category.id: ID
+category.name: Nazwa
+category.delete: Usuwanie kategorii
+category.add_new: Dodawanie nowej kategorii
+category.edit: Edycja kategorii
+
+gallery.choice_user: Wybierz właściciela
+gallery.alt: Zdjęcie wyróżniające
+gallery.name: Nazwa galerii
+
+front.post_exception: Artykuł nie został znaleziony
+
+command.create_user: Dodaj użytkownika

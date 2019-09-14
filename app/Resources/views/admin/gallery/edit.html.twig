@@ -1,0 +1,29 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block body %}
+    <div class="container">
+        {{ form_start(form, enctype='multipart/form-data', {"attr": {"novalidate": "novalidate"}}) }}
+        {{ form_row(form.fullname) }}
+        {{ form_row(form.owner) }}
+        {{ form_row(form.imageFile) }}
+
+        <div class="col-sm-4 float-right">
+            <button type="submit" class="btn btn-primary">
+                {{ 'menu.save'|trans }}<i class="fa fa-save ml-2" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="col-sm-8 col-sm-offset-2" id="exp_list" data-prototype="{{ form_widget(form.item.vars.prototype)|e('html_attr') }}">
+            {% for row in form.item %}
+                <div class="card">
+                    <div class="card-header bg-danger">
+                        <strong>{{ row.vars.value.title }}</strong>
+                    </div>
+                    <div class="card-body">
+                        {{ form_row(row) }}
+                    </div>
+                </div>
+                <div class="mb-5"></div>
+            {% endfor %}
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

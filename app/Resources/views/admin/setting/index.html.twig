@@ -1,0 +1,37 @@
+{% extends 'baseAdmin.html.twig' %}
+{% block body %}
+<div class="container" style="margin-top:40px;">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#system" role="tab" aria-controls="profile" aria-selected="true">{{ 'admin.system'|trans }}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#php" role="tab" aria-controls="profile" aria-selected="false">{{ 'admin.php'|trans }}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#db" role="tab" aria-controls="profile" aria-selected="false">{{ 'admin.database'|trans }}</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#memory" role="tab" aria-controls="memory" aria-selected="false">{{ 'admin.cache'|trans }}</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent" style="margin-top:40px;">
+
+        <div class="tab-pane fade show active" id="system" role="tabpanel" aria-labelledby="home-tab">
+            <h3>Wybierz język panelu administracyjnego:</h3>
+            <a href="{{ url('language_polish') }}">PL</a>
+            <a href="{{ url('language_english') }}">EN</a>
+        </div>
+
+        <div class="tab-pane fade" id="php" role="tabpanel" aria-labelledby="profile-tab">
+        </div>
+
+        <div class="tab-pane fade" id="db" role="tabpanel" aria-labelledby="profile-tab">
+        </div>
+
+        <div class="tab-pane fade" id="memory" role="tabpanel" aria-labelledby="contact-tab">
+            <a class="btn btn-outline-success" href="{{ url('cache_clear') }}" role="button">Wyczyść cache</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,9 @@
+AppBundle\Entity\Page:
+  properties:
+    name:
+      - NotBlank: { message: 'page.not_blank' }
+
+AppBundle\Entity\Post:
+  properties:
+    name:
+      - NotBlank: { message: 'page.not_blank' }

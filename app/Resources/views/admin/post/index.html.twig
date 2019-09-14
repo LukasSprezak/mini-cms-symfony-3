@@ -1,0 +1,83 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mb-3">
+            <h1>{{ 'menu.list_post'|trans }}</h1>
+            <a href="{{ url('post_create') }}" class="btn btn-primary">{{ 'menu.add_article'|trans }}<span class="fa fa-plus-circle ml-2"></span></a>
+        </div>
+        <div class="col-lg-12">
+
+            <div class="card card-default mb-5">
+                <div class="card-header">
+                    Sortowanie i filtrowanie:
+                </div>
+                <div class="card-body">
+                    <form action="{{ path('post_index') }}" method="get" class="form-inline filter-search" role="form">
+
+                        <div class="form-group col-md-4">
+                            <label for="inputState">Wybierz kategorie:</label>
+                            <select name="categorySelectedId" id="inputState" class="form-control">
+                                <option></option>
+                                <option {{ -1 == queryParams['categorySelectedId'] ? 'selected="selected"':'' }} value="-1">Brak kategorii</option>
+                                {% for category in categoriesList %}
+                                    <option {{ category['id'] == queryParams['categorySelectedId'] ? 'selected="selected"':'' }} value="{{ category['id'] }}">{{ category['name'] }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputEmail1" class="col-lg-5 control-label">Wyników</label>
+                            <div class="col-lg-7">
+                                <select name="limit" id="limit" class="form-control">
+                                    {#
+                                     {% for limit in limits %}
+                                        <option {{ currLimit == limit ? 'selected="selected"':'' }} value="{{ limit }}">
+                                            {{ limit }}
+                                        </option>
+                                    {% endfor %}
+                                    #}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-primary">Wybierz</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">{{ knp_pagination_sortable(posts_list, 'post.web_address'|trans, 'post.slug') }}</th>
+                    <th scope="col">{{ knp_pagination_sortable(posts_list, 'post.title'|trans, 'post.title') }}</th>
+                    <th scope="col">{{ knp_pagination_sortable(posts_list, 'post.add_date'|trans, 'post.publishedDate') }}</th>
+                    <th class="actions">{{ 'menu.option'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for post in posts_list %}
+                <tr>
+                    <td>{{ post.slug }}</td>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.publishedDate|date("d-m-Y") }}</td>
+                    <td>
+                        <a href="{{ path('post_edit', {'id': post.id}) }}" class="btn btn-xs btn-info">{{ 'menu.edit'|trans }}<span class="fas fa-edit ml-2"></span></a>
+                        <a href="{{ path('post_details', {'id': post.id}) }}" class="btn btn-xs btn-success">{{ 'menu.view'|trans }}<span class="far fa-folder-open ml-2"></span></a>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-lg-12">
+            <div class="navigation float-right">
+                {{ knp_pagination_render(posts_list) }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

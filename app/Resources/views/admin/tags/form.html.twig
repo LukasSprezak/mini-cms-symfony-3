@@ -1,0 +1,37 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block pageTitle %}
+    {% if tag.id is null %}
+        {{ parent() }} - {{ 'tag.add_new'|trans }}
+    {% else %}
+        {{ parent() }} - {{ 'tag.edit'|trans }} "{{ tag.name }}"
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    {% if tag.id is null %}
+                        {{ 'tag.add_new'|trans }}
+                    {% else %}
+                        {{ 'tag.edit'|trans }} "{{ tag.name }}"
+                    {% endif %}
+                </div>
+                <div class="panel-body">
+                    {{ form_start(form) }}
+                        {{ form_row(form.name) }}
+                        {{ form_row(form.slug) }}
+                    <button type="submit" class="btn btn-primary">
+                        {{ 'menu.save'|trans }}<i class="fa fa-save ml-2" aria-hidden="true"></i>
+                    </button>
+                    <a href="{{ url('tag') }}" class="btn btn-light">{{ 'menu.cancel'|trans }}<span class="fas fa-undo ml-2"></span></a>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
